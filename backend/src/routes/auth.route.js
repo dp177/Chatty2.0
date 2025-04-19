@@ -27,7 +27,7 @@ router.get("/base", (req, res) => {
   res.cookie("token", token, {
     httpOnly: true,
     sameSite: "Lax", // or "None" if using HTTPS
-    secure: false,   // must be false on localhost
+    secure: process.env.NODE_ENV === "production",
     maxAge: 3600000
   });
   
